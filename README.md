@@ -79,41 +79,30 @@ Five templates are **deployed and verifiable** on Sepolia testnet right now. Cli
 
 ## Install the skill
 
-### Fastest: one-line install (Mac / Linux / WSL — needs Node)
+### Claude Code (Mac / Linux)
 
 ```bash
-npx degit Ollie202/zama-cookbook/skill ~/.claude/skills/zama-cookbook
+mkdir -p ~/.claude/skills && cp -r skill ~/.claude/skills/zama-cookbook
 ```
 
-Downloads only the `skill/` folder. No git history, no clone, ~2 seconds.
-
-### Windows PowerShell, no Node required
+### Claude Code (Windows PowerShell)
 
 ```powershell
-$tmp = "$env:TEMP\zc-$(Get-Random)"
-Invoke-WebRequest https://github.com/Ollie202/zama-cookbook/archive/refs/heads/main.zip -OutFile "$tmp.zip"
-Expand-Archive "$tmp.zip" -DestinationPath $tmp
 mkdir $env:USERPROFILE\.claude\skills -Force
-Move-Item "$tmp\zama-cookbook-main\skill" "$env:USERPROFILE\.claude\skills\zama-cookbook"
-Remove-Item -Recurse -Force "$tmp", "$tmp.zip"
+Copy-Item -Recurse -Force skill $env:USERPROFILE\.claude\skills\zama-cookbook
 ```
 
-### Or: clone-and-copy (any OS)
-
-```bash
-git clone https://github.com/Ollie202/zama-cookbook.git
-cp -r zama-cookbook/skill ~/.claude/skills/zama-cookbook
-```
+The skill auto-activates whenever a conversation mentions FHEVM, Zama, encrypted types, or imports `@fhevm/solidity`. Restart your editor after install.
 
 ### Cursor / Windsurf
 
 ```bash
-npx degit Ollie202/zama-cookbook/skill .cursor/rules/zama-cookbook
+mkdir -p .cursor/rules
+cp skill/SKILL.md .cursor/rules/zama-cookbook.md
+cp -r skill/references .cursor/rules/zama-cookbook-references
 ```
 
 (Same files work in any agent, the format is plain Markdown with YAML frontmatter.)
-
-After install, **restart your editor**. The skill auto-activates whenever the user is asking to write FHEVM code (see [How the skill auto-activates](#how-the-skill-auto-activates)).
 
 ## Verify it works
 
