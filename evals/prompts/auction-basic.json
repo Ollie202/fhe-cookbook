@@ -1,0 +1,16 @@
+{
+  "id": "auction-basic",
+  "prompt": "Build a sealed-bid auction in Solidity using Zama FHEVM. Bidders submit encrypted bid amounts during a fixed window. After the deadline, anyone can trigger settlement, which reveals only the highest bid and winner address (everything else stays encrypted). Use the @fhevm/solidity 0.11+ API.",
+  "checks": [
+    { "type": "lint-clean" },
+    { "type": "imports", "value": "@fhevm/solidity/lib/FHE.sol" },
+    { "type": "inherits", "value": "ZamaEthereumConfig" },
+    { "type": "uses-pattern", "pattern": "FHE\\.select" },
+    { "type": "uses-pattern", "pattern": "FHE\\.allowThis" },
+    { "type": "uses-pattern", "pattern": "FHE\\.fromExternal" },
+    { "type": "uses-pattern", "pattern": "FHE\\.checkSignatures" },
+    { "type": "uses-pattern", "pattern": "FHE\\.makePubliclyDecryptable|FHE\\.requestDecryption" },
+    { "type": "no-pattern", "pattern": "TFHE\\." },
+    { "type": "no-pattern", "pattern": "import\\s+[^;]*['\"]fhevm/" }
+  ]
+}

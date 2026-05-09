@@ -1,0 +1,15 @@
+{
+  "id": "private-vote",
+  "prompt": "Write a single-choice voting contract in Solidity on Zama FHEVM. Eligible voters submit encrypted choices in [0, OPTIONS). The contract maintains an encrypted running tally per option. After a deadline, the tallies become publicly decryptable.",
+  "checks": [
+    { "type": "lint-clean" },
+    { "type": "imports", "value": "@fhevm/solidity/lib/FHE.sol" },
+    { "type": "inherits", "value": "ZamaEthereumConfig" },
+    { "type": "uses-pattern", "pattern": "FHE\\.eq" },
+    { "type": "uses-pattern", "pattern": "FHE\\.select" },
+    { "type": "uses-pattern", "pattern": "FHE\\.makePubliclyDecryptable" },
+    { "type": "uses-pattern", "pattern": "FHE\\.allowThis" },
+    { "type": "no-pattern", "pattern": "TFHE\\." },
+    { "type": "no-pattern", "pattern": "if\\s*\\([^)]*ebool" }
+  ]
+}

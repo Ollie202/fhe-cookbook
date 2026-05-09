@@ -1,0 +1,15 @@
+{
+  "id": "erc20-confidential",
+  "prompt": "Write a confidential ERC-20-style token in Solidity using Zama FHEVM where balances and transfer amounts are encrypted. Include mint (minter only) and transfer functions. The transfer should silently move zero (not revert) when the sender lacks balance, and return the actual moved amount.",
+  "checks": [
+    { "type": "lint-clean" },
+    { "type": "imports", "value": "@fhevm/solidity/lib/FHE.sol" },
+    { "type": "inherits", "value": "ZamaEthereumConfig" },
+    { "type": "uses-pattern", "pattern": "euint64" },
+    { "type": "uses-pattern", "pattern": "FHE\\.select" },
+    { "type": "uses-pattern", "pattern": "FHE\\.allowThis" },
+    { "type": "uses-pattern", "pattern": "FHE\\.allow\\(" },
+    { "type": "uses-pattern", "pattern": "FHE\\.fromExternal" },
+    { "type": "no-pattern", "pattern": "TFHE\\." }
+  ]
+}

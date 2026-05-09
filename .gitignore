@@ -1,0 +1,27 @@
+node_modules/
+.next/
+out/
+dist/
+.env
+.env.local
+.env.*.local
+
+# Foundry
+contracts/dependencies/
+contracts/cache/
+contracts/out/
+contracts/broadcast/
+contracts/.gas-snapshot
+
+# Hardhat
+hardhat/cache/
+hardhat/artifacts/
+hardhat/typechain-types/
+
+# eval results (regenerable)
+evals/results/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

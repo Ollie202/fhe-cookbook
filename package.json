@@ -1,0 +1,22 @@
+{
+  "name": "zama-cookbook",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Production-ready agent skill for Zama FHEVM — Claude Code, Cursor, Windsurf.",
+  "license": "MIT",
+  "scripts": {
+    "lint:fhe": "node skill/scripts/fhe-lint.mjs skill/templates contracts/src",
+    "lint:fhe:fixture": "node skill/scripts/fhe-lint.mjs skill/scripts/__fixtures__ || true",
+    "test:foundry": "cd contracts && forge test -vv",
+    "test:hardhat": "cd hardhat && pnpm test",
+    "deploy:foundry:sepolia": "cd contracts && forge script script/Deploy.s.sol:Deploy --rpc-url $SEPOLIA_RPC_URL --private-key $PRIVATE_KEY --broadcast --verify",
+    "deploy:hardhat:sepolia": "cd hardhat && pnpm deploy:sepolia",
+    "frontend:dev": "cd frontend && pnpm dev",
+    "frontend:build": "cd frontend && pnpm build",
+    "eval:baseline": "node evals/run.mjs --agent baseline",
+    "eval:skill": "node evals/run.mjs --agent skill",
+    "eval:report": "node evals/run.mjs --agent baseline && node evals/run.mjs --agent skill && node evals/run.mjs --report",
+    "install:skill:claude": "node skill/scripts/install.mjs claude",
+    "install:skill:cursor": "node skill/scripts/install.mjs cursor"
+  }
+}

@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  lint-and-eval:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Run fhe-lint on templates (must be clean)
+        run: node skill/scripts/fhe-lint.mjs skill/templates contracts/src
+      - name: Run fhe-lint on bad fixture (must report errors)
+        run: |
+          set +e
+          node skill/scripts/fhe-lint.mjs skill/scripts/__fixtures__/bad.sol
+          ec=$?
+          set -e
+          if [ "$ec" -eq 0 ]; then
+            echo "Expected the bad fixture to fail the linter, but it passed." >&2
+            exit 1
+          fi
+      - name: Run agent eval harness
+        run: |
+          node evals/run.mjs --agent baseline
+          node evals/run.mjs --agent skill
+          node evals/run.mjs --report
+
+  foundry:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with: { version: nightly }
+      - name: Install soldeer deps
+        run: cd contracts && forge soldeer install
+      - name: forge build
+        run: cd contracts && forge build --sizes
+      - name: forge test
+        run: cd contracts && forge test -vv
