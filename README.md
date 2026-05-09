@@ -18,6 +18,38 @@ When you ask Claude / Cursor / Windsurf to write an FHEVM contract today, it hal
 
 This skill fixes that by giving the agent **a structured, version-pinned manual + working templates + a static linter**, installed in seconds, used by the agent automatically.
 
+## How the skill auto-activates
+
+You don't need to manually invoke it. After install, the agent scans the skill's frontmatter on every message and loads it when the user's prompt mentions any of:
+
+- **FHEVM**, **FHE**, **fully homomorphic encryption**
+- **Zama** (the protocol name)
+- **confidential smart contract**, **encrypted contract**
+- Type names: **euint64**, **ebool**, **eaddress**, **encrypted types**
+- API references: **@fhevm/solidity**, **relayer SDK**, **@fhevm/hardhat-plugin**, **forge-fhevm**
+- Concepts: **ACL grants**, **input proofs**, **decryption oracle**
+- Privacy use cases: **sealed-bid auction**, **private voting**, **encrypted balance**, **confidential token**
+
+**These prompts trigger the skill automatically:**
+
+```
+Build me a confidential auction using Zama FHEVM
+Write a sealed-bid auction smart contract
+I need encrypted balances with FHE
+How do I use euint64 in Solidity
+Build a private voting contract on Zama
+```
+
+**These don't (no privacy signal, agent won't know FHE is wanted):**
+
+```
+Build me a smart contract for an auction
+Write me a Solidity voting app
+I need a token contract
+```
+
+If your prompt is too generic, either add a privacy keyword (`"build me a private NFT raffle"`) or explicitly invoke the skill (`"use the zama-cookbook skill to..."`).
+
 ## Live on Sepolia
 
 Five templates are **deployed and verifiable** on Sepolia testnet right now. Click any address to interact. The repo ships **five more** as additional reference patterns (see [`skill/templates/`](skill/templates/), covers payroll, RPS, dice, vesting, limit order). For real-world examples of each, see [HOW_TO_USE.md](HOW_TO_USE.md).
@@ -32,15 +64,15 @@ Five templates are **deployed and verifiable** on Sepolia testnet right now. Cli
 
 ## What's in the box
 
-| Path | What it is | Lines |
-|---|---|---|
-| [`skill/SKILL.md`](skill/SKILL.md) | The skill router, frontmatter + 8 hard rules + workflow. What an agent loads first. | ~140 |
-| [`skill/references/`](skill/references/) | 12 deep-dive chapters: onboarding, mental model, types, ops, ACL, inputs, decryption, frontend (v3 SDK), testing, deployment, anti-patterns, recipes. Loaded progressively, not upfront. | ~1,400 |
-| [`skill/templates/`](skill/templates/) | Ten vetted starting points. Five are deployed live (see above); five more, `ConfidentialPayroll`, `PrivateRPS`, `EncryptedDice`, `ConfidentialVesting`, `PrivateLimitOrder`, ship as additional reference patterns. All linter-clean. | ~700 |
-| [`skill/scripts/fhe-lint.mjs`](skill/scripts/fhe-lint.mjs) | Static linter, 13 rules, ranked by severity. Each maps to an entry in [`anti-patterns.md`](skill/references/anti-patterns.md). | ~340 |
-| [`hardhat/`](hardhat/) | Hardhat workspace, 12 passing tests across all 5 contracts, mock mode against `@fhevm/hardhat-plugin`. | ~820 |
-| [`contracts/`](contracts/) | Foundry-style mirror with 12 passing `forge test` cases, ready for `forge build` and `forge test`. | ~700 |
-| [`evals/`](evals/) | Prompts + harness measuring agent accuracy with vs. without the skill (`5/28` baseline → `28/28` with skill). | ~780 |
+| Path | What it is |
+|---|---|
+| [`skill/SKILL.md`](skill/SKILL.md) | The skill router, frontmatter + 8 hard rules + workflow. What an agent loads first. |
+| [`skill/references/`](skill/references/) | 12 deep-dive chapters: onboarding, mental model, types, ops, ACL, inputs, decryption, frontend (v3 SDK), testing, deployment, anti-patterns, recipes. Loaded progressively, not upfront. |
+| [`skill/templates/`](skill/templates/) | Ten vetted starting points. Five are deployed live (see above); five more, `ConfidentialPayroll`, `PrivateRPS`, `EncryptedDice`, `ConfidentialVesting`, `PrivateLimitOrder`, ship as additional reference patterns. All linter-clean. |
+| [`skill/scripts/fhe-lint.mjs`](skill/scripts/fhe-lint.mjs) | Static linter, 13 rules, ranked by severity. Each maps to an entry in [`anti-patterns.md`](skill/references/anti-patterns.md). |
+| [`hardhat/`](hardhat/) | Hardhat workspace, 12 passing tests across all 5 contracts, mock mode against `@fhevm/hardhat-plugin`. |
+| [`contracts/`](contracts/) | Foundry-style mirror with 12 passing `forge test` cases, ready for `forge build` and `forge test`. |
+| [`evals/`](evals/) | Prompts + harness measuring agent accuracy with vs. without the skill (`5/28` baseline → `28/28` with skill). |
 
 ## Install the skill
 
@@ -68,40 +100,6 @@ cp -r skill/references .cursor/rules/zama-cookbook-references
 ```
 
 (Same files work in any agent, the format is plain Markdown with YAML frontmatter.)
-
-## How the skill auto-activates
-
-You don't need to manually invoke it. The agent scans the skill's frontmatter on every message and loads it when the user's prompt mentions any of:
-
-- **FHEVM**, **FHE**, **fully homomorphic encryption**
-- **Zama** (the protocol name)
-- **confidential smart contract**, **encrypted contract**
-- Type names: **euint64**, **ebool**, **eaddress**, **encrypted types**
-- API references: **@fhevm/solidity**, **relayer SDK**, **@fhevm/hardhat-plugin**, **forge-fhevm**
-- Concepts: **ACL grants**, **input proofs**, **decryption oracle**
-- Privacy use cases: **sealed-bid auction**, **private voting**, **encrypted balance**, **confidential token**
-
-### Examples
-
-**These prompts trigger the skill automatically:**
-
-```
-Build me a confidential auction using Zama FHEVM
-Write a sealed-bid auction smart contract
-I need encrypted balances with FHE
-How do I use euint64 in Solidity
-Build a private voting contract on Zama
-```
-
-**These don't (no privacy signal, agent won't know FHE is wanted):**
-
-```
-Build me a smart contract for an auction
-Write me a Solidity voting app
-I need a token contract
-```
-
-If your prompt is too generic, either add a privacy keyword (`"build me a private NFT raffle"`) or explicitly invoke the skill (`"use the zama-cookbook skill to..."`).
 
 ## Verify it works
 
