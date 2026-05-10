@@ -3,7 +3,7 @@ import { Providers } from './providers';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Zama Cookbook — Sealed-Bid Auction',
+  title: 'FHE Cookbook — Sealed-Bid Auction',
   description: 'Confidential auction on Zama FHEVM',
 };
 

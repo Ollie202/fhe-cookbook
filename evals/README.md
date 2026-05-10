@@ -1,6 +1,6 @@
 # Agent eval harness
 
-Measures whether an AI coding agent produces **correct** FHEVM contracts when given a natural-language prompt — with vs. without the `zama-cookbook` skill loaded.
+Measures whether an AI coding agent produces **correct** FHEVM contracts when given a natural-language prompt — with vs. without the `fhe-cookbook` skill loaded.
 
 ## How it works
 

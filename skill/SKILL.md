@@ -1,5 +1,5 @@
 ---
-name: zama-cookbook
+name: fhe-cookbook
 description: |
   Use ONLY when the user wants to WRITE, TEST, DEBUG, or DEPLOY code that uses Zama FHEVM (confidential smart contracts with encrypted balances, sealed-bid auctions, private voting, confidential DeFi). Triggers on coding requests that mention FHEVM, Zama Protocol, fully homomorphic encryption, confidential ERC-7984, encrypted types (`euint*`, `ebool`, `eaddress`), ACL grants, input proofs, decryption oracle, the relayer SDK, `@fhevm/solidity`, `@fhevm/hardhat-plugin`, or `forge-fhevm`. Also triggers when the user pastes Solidity that imports `@fhevm/solidity/lib/FHE.sol`.
 

@@ -1,4 +1,4 @@
-// Output produced by an agent WITHOUT zama-cookbook (representative baseline).
+// Output produced by an agent WITHOUT fhe-cookbook (representative baseline).
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 

@@ -1,4 +1,4 @@
-// Output produced by an agent WITH zama-cookbook loaded.
+// Output produced by an agent WITH fhe-cookbook loaded.
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.27;
 

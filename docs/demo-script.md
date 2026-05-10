@@ -5,7 +5,7 @@ Target: convince judges in 180 seconds that an AI agent loaded with this skill p
 ## Setup (off-camera, before recording)
 
 1. Fresh Claude Code session in an empty directory.
-2. Run: `node ~/Documents/GitHub/zama-cookbook/skill/scripts/install.mjs claude`
+2. Run: `node ~/Documents/GitHub/fhe-cookbook/skill/scripts/install.mjs claude`
 3. Sepolia wallet funded (~0.05 ETH).
 4. `frontend/.env` populated with the Sepolia auction address you'll deploy on camera.
 
@@ -13,7 +13,7 @@ Target: convince judges in 180 seconds that an AI agent loaded with this skill p
 
 ### 0:00–0:15 — Hook (15s)
 Voiceover, terminal in shot.
-> "Most AI coding agents have no idea how to write FHEVM contracts. Today I'm going to show you the same prompt — once with no help, once with the zama-cookbook skill loaded — and run both through a 28-check eval harness."
+> "Most AI coding agents have no idea how to write FHEVM contracts. Today I'm going to show you the same prompt — once with no help, once with the fhe-cookbook skill loaded — and run both through a 28-check eval harness."
 
 Cut to terminal: `cat evals/results/baseline.json | head` → ugly numbers.
 
@@ -46,7 +46,7 @@ Fast-forward (or pre-recorded skip). Click settle. Decryption oracle fires. Winn
 
 ### 2:50–3:00 — Close (10s)
 Cut to repo readme on GitHub.
-> "zama-cookbook on GitHub — SKILL.md plus 10 references, three vetted templates, a 13-rule linter, an eval harness, Hardhat and Foundry parity, Next.js frontend. MIT-licensed. Drop it into Claude, Cursor, or Windsurf with one command."
+> "fhe-cookbook on GitHub — SKILL.md plus 10 references, three vetted templates, a 13-rule linter, an eval harness, Hardhat and Foundry parity, Next.js frontend. MIT-licensed. Drop it into Claude, Cursor, or Windsurf with one command."
 
 End card: GitHub URL + bounty submission tag.
 

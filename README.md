@@ -1,4 +1,4 @@
-# Zama Cookbook
+# FHE Cookbook
 
 > **A production-ready agent skill that teaches AI coding assistants (Claude Code, Cursor, Windsurf) how to write, test, and deploy confidential smart contracts on Zama FHEVM.**
 
@@ -51,7 +51,7 @@ Summarise the FHEVM whitepaper       (summary, not code)
 Build me a smart contract for an auction   (no privacy signal)
 ```
 
-If your coding prompt is too generic to trigger the skill, add a privacy keyword (`"build me a private NFT raffle"`) or invoke explicitly (`"use the zama-cookbook skill to..."`).
+If your coding prompt is too generic to trigger the skill, add a privacy keyword (`"build me a private NFT raffle"`) or invoke explicitly (`"use the fhe-cookbook skill to..."`).
 
 ## Live on Sepolia
 
@@ -82,14 +82,14 @@ Five templates are **deployed and verifiable** on Sepolia testnet right now. Cli
 ### Claude Code (Mac / Linux)
 
 ```bash
-mkdir -p ~/.claude/skills && cp -r skill ~/.claude/skills/zama-cookbook
+mkdir -p ~/.claude/skills && cp -r skill ~/.claude/skills/fhe-cookbook
 ```
 
 ### Claude Code (Windows PowerShell)
 
 ```powershell
 mkdir $env:USERPROFILE\.claude\skills -Force
-Copy-Item -Recurse -Force skill $env:USERPROFILE\.claude\skills\zama-cookbook
+Copy-Item -Recurse -Force skill $env:USERPROFILE\.claude\skills\fhe-cookbook
 ```
 
 The skill auto-activates whenever a conversation mentions FHEVM, Zama, encrypted types, or imports `@fhevm/solidity`. Restart your editor after install.
@@ -98,8 +98,8 @@ The skill auto-activates whenever a conversation mentions FHEVM, Zama, encrypted
 
 ```bash
 mkdir -p .cursor/rules
-cp skill/SKILL.md .cursor/rules/zama-cookbook.md
-cp -r skill/references .cursor/rules/zama-cookbook-references
+cp skill/SKILL.md .cursor/rules/fhe-cookbook.md
+cp -r skill/references .cursor/rules/fhe-cookbook-references
 ```
 
 (Same files work in any agent, the format is plain Markdown with YAML frontmatter.)
@@ -141,7 +141,7 @@ These are the **exact versions verified to compile and pass tests** as of May 20
 ## Repository layout
 
 ```
-zama-cookbook/
+fhe-cookbook/
 ├── README.md                     ← you are here
 ├── skill/                        ← the deliverable (drop into ~/.claude/skills/)
 │   ├── SKILL.md                  ← router with frontmatter

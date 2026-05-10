@@ -2,11 +2,11 @@
 
 ## Project
 
-**zama-cookbook** — a production-ready agent skill that teaches AI coding agents (Claude Code, Cursor, Windsurf) to write, test, and deploy confidential smart contracts on Zama FHEVM.
+**fhe-cookbook** — a production-ready agent skill that teaches AI coding agents (Claude Code, Cursor, Windsurf) to write, test, and deploy confidential smart contracts on Zama FHEVM.
 
 ## Repo
 
-https://github.com/<your-handle>/zama-cookbook  *(replace before submitting)*
+https://github.com/<your-handle>/fhe-cookbook  *(replace before submitting)*
 
 ## Demo video
 
@@ -37,7 +37,7 @@ https://<youtube-or-loom-link>  *(replace before submitting)*
 
 ## Comparison vs Makabeez/fhevm-skill (the only other public submission)
 
-| | Makabeez | zama-cookbook |
+| | Makabeez | fhe-cookbook |
 |---|---|---|
 | Skill format | single SKILL.md | SKILL.md router + 10 progressive-disclosure references |
 | Anti-patterns | 12 | 18 (full OZ guide ported) |
@@ -52,7 +52,7 @@ https://<youtube-or-loom-link>  *(replace before submitting)*
 
 ```bash
 git clone <repo>
-cd zama-cookbook
+cd fhe-cookbook
 pnpm i
 
 # Skill quality

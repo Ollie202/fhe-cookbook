@@ -5,7 +5,7 @@ export default function Page() {
     <main className="container">
       <AuctionPanel />
       <p className="muted" style={{ marginTop: 24, textAlign: 'center' }}>
-        Built with the <a href="https://github.com/anthropics/zama-cookbook">zama-cookbook</a> agent skill.
+        Built with the <a href="https://github.com/anthropics/fhe-cookbook">fhe-cookbook</a> agent skill.
       </p>
     </main>
   );

@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
- * Install the zama-cookbook skill into a target agent's skill directory.
+ * Install the fhe-cookbook skill into a target agent's skill directory.
  *
- *   node skill/scripts/install.mjs claude   # ~/.claude/skills/zama-cookbook
- *   node skill/scripts/install.mjs cursor   # .cursor/rules/zama-cookbook.md
- *   node skill/scripts/install.mjs windsurf # .windsurf/rules/zama-cookbook.md
+ *   node skill/scripts/install.mjs claude   # ~/.claude/skills/fhe-cookbook
+ *   node skill/scripts/install.mjs cursor   # .cursor/rules/fhe-cookbook.md
+ *   node skill/scripts/install.mjs windsurf # .windsurf/rules/fhe-cookbook.md
  */
 import { cpSync, mkdirSync, copyFileSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname, resolve } from 'node:path';
@@ -21,7 +21,7 @@ if (!target) {
 }
 
 if (target === 'claude') {
-  const dest = join(homedir(), '.claude', 'skills', 'zama-cookbook');
+  const dest = join(homedir(), '.claude', 'skills', 'fhe-cookbook');
   mkdirSync(dest, { recursive: true });
   cpSync(SKILL_DIR, dest, { recursive: true });
   console.log(`installed → ${dest}`);
@@ -33,8 +33,8 @@ if (target === 'claude') {
   const ap = readFileSync(join(SKILL_DIR, 'references', 'anti-patterns.md'), 'utf8');
   const recipes = readFileSync(join(SKILL_DIR, 'references', 'recipes.md'), 'utf8');
   const merged = `${skillMd}\n\n---\n\n# Anti-patterns (full list)\n\n${ap}\n\n---\n\n# Recipes\n\n${recipes}\n`;
-  writeFileSync(join(folder, 'zama-cookbook.md'), merged);
-  console.log(`installed → ${folder}/zama-cookbook.md`);
+  writeFileSync(join(folder, 'fhe-cookbook.md'), merged);
+  console.log(`installed → ${folder}/fhe-cookbook.md`);
 } else {
   console.error(`unknown target: ${target}`);
   process.exit(2);
